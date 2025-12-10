@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kepler Q-Max | Quantum-Classical Hybrid AI | Sonisium Quantum Lab</title>
+    <meta name="description" content="Kepler Q-Max: Advanced quantum-classical hybrid AI model with 25 qubits, 94.28% accuracy. Revolutionizing astrophysics, finance, and industry optimization.">
+    <meta name="keywords" content="quantum computing, AI, Kepler Q-Max, quantum machine learning, Bangladesh tech, quantum-classical hybrid, Qiskit, PyTorch">
+    <meta name="author" content="Hussain Billah | Sonisium Quantum Lab">
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content="Kepler Q-Max | Quantum Intelligence Redefined">
+    <meta property="og:description" content="Advanced 25-qubit quantum-classical hybrid model achieving 94.28% accuracy on complex datasets">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sonisiumlab.com/kepler-qmax">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Kepler Q-Max",
+        "applicationCategory": "QuantumMachineLearning",
+        "operatingSystem": "Quantum-Classical Hybrid",
+        "description": "Quantum-classical hybrid AI model with 25 qubits and 94.28% accuracy for astrophysics and financial optimization",
+        "author": {
+            "@type": "Person",
+            "name": "Hussain Billah"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
+    }
+    </script>
+    
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts: Playfair Display for headers, Poppins for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="https://postimg.cc/BLVGpctJ">
+
+    <style>
+        :root {
+            --primary-blue: #1e40af;
+            --secondary-blue: #3b82f6;
+            --accent-gold: #f59e0b;
+            --neutral-cream: #fdfbf7;
+            --text-dark: #1e293b;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--neutral-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+        
+        /* Animated Profile Circle */
+        .profile-circle {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--secondary-blue);
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+        
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-circle::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #3b82f6, #f59e0b, #8b5cf6) border-box;
+            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Chart Container Styling */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .nav-active {
+            border-bottom: 3px solid var(--primary-blue);
+            color: var(--primary-blue);
+            font-weight: 700;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+        }
+        
+        /* Section Dividers */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
+            margin: 4rem auto;
+            max-width: 1200px;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="profile-circle">
+                        <img src="https://i.postimg.cc/BLVGpctJ/profile.jpg" alt="Hussain Billah - Lead Researcher" onerror="this.src='https://via.placeholder.com/160x160/3b82f6/ffffff?text=HB'" />
+                    </div>
+                    <div>
+                        <span class="text-2xl font-bold text-slate-800 font-heading">Kepler <span class="gradient-text">Q-Max</span></span>
+                        <p class="text-xs text-slate-500 mt-1">by Sonisium Quantum Lab</p>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <button onclick="scrollToSection('dashboard')" class="nav-btn nav-active px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-700 transition-all" data-target="dashboard">Dashboard</button>
+                    <button onclick="scrollToSection('tech')" class="nav-btn px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-700 transition-all" data-target="tech">Technology</button>
+                    <button onclick="scrollToSection('impact')" class="nav-btn px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-700 transition-all" data-target="impact">Applications & Economics</button>
+                    <button onclick="scrollToSection('strategy')" class="nav-btn px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-700 transition-all" data-target="strategy">National Strategy</button>
+                    <button onclick="scrollToSection('profile')" class="nav-btn px-4 py-2 text-sm font-medium text-slate-700 hover:text-blue-700 transition-all" data-target="profile">Portfolio</button>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button onclick="toggleMobileMenu()" class="text-slate-700 hover:text-blue-700 focus:outline-none">
+                        <span class="text-2xl">☰</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 shadow-lg">
+            <div class="px-4 pt-2 pb-4 space-y-2">
+                <button onclick="scrollToSection('dashboard')" class="block w-full text-left px-4 py-3 text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Dashboard</button>
+                <button onclick="scrollToSection('tech')" class="block w-full text-left px-4 py-3 text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Technology</button>
+                <button onclick="scrollToSection('impact')" class="block w-full text-left px-4 py-3 text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Applications & Economics</button>
+                <button onclick="scrollToSection('strategy')" class="block w-full text-left px-4 py-3 text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">National Strategy</button>
+                <button onclick="scrollToSection('profile')" class="block w-full text-left px-4 py-3 text-base font-medium text-slate-700 hover:bg-blue-50 hover:text-blue-700 rounded-lg transition">Portfolio</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-20">
+
+        <!-- SECTION 1: DASHBOARD / HERO -->
+        <section id="dashboard" class="fade-in">
+            <div class="text-center mb-12">
+                <span class="inline-block py-2 px-4 rounded-full bg-blue-100 text-blue-800 text-sm font-semibold mb-4 tracking-wide">SONISIUM QUANTUM LAB</span>
+                <h1 class="text-4xl md:text-6xl font-bold text-slate-900 mb-6 font-heading leading-tight">
+                    Kepler Q-Max: <span class="gradient-text">The Pinnacle of Quantum Intelligence</span>
+                </h1>
+                <p class="text-xl text-slate-600 max-w-4xl mx-auto leading-relaxed">
+                    A state-of-the-art quantum-classical hybrid model built on a novel architecture combining PyTorch and Qiskit, 
+                    achieving <strong>94.28% accuracy</strong> using 25 qubits and the QAOA algorithm for complex optimization problems.
+                </p>
+            </div>
+
+            <!-- Key Metrics Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <!-- Accuracy Card -->
+                <div class="glass-card rounded-2xl p-8 border-l-4 border-green-500 cursor-pointer" onclick="highlightMetric('acc')">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Final Accuracy</p>
+                            <h3 class="text-4xl font-bold text-slate-800 mt-2">94.28%</h3>
+                            <p class="text-xs text-green-600 mt-2 font-medium">↑ Benchmark Exceeded</p>
+                        </div>
+                        <span class="text-3xl">🎯</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-4">Outperforms classical models by 18-22% on astrophysical classification tasks</p>
+                </div>
+
+                <!-- Qubits Card -->
+                <div class="glass-card rounded-2xl p-8 border-l-4 border-blue-500 cursor-pointer" onclick="highlightMetric('qubit')">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Qubit Count</p>
+                            <h3 class="text-4xl font-bold text-slate-800 mt-2">25 Qubits</h3>
+                            <p class="text-xs text-blue-600 mt-2 font-medium">IBM Quantum Simulator</p>
+                        </div>
+                        <span class="text-3xl">⚛️</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-4">Simulates quantum advantage for combinatorial optimization problems</p>
+                </div>
+
+                <!-- Depth Card -->
+                <div class="glass-card rounded-2xl p-8 border-l-4 border-purple-500 cursor-pointer" onclick="highlightMetric('depth')">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Circuit Depth</p>
+                            <h3 class="text-4xl font-bold text-slate-800 mt-2">10 Layers</h3>
+                            <p class="text-xs text-purple-600 mt-2 font-medium">QAOA Architecture</p>
+                        </div>
+                        <span class="text-3xl">🔄</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-4">Optimal depth balancing quantum advantage with noise resilience</p>
+                </div>
+
+                <!-- Data Card -->
+                <div class="glass-card rounded-2xl p-8 border-l-4 border-orange-500 cursor-pointer" onclick="highlightMetric('data')">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <p class="text-sm font-medium text-slate-500 uppercase tracking-wider">Training Samples</p>
+                            <h3 class="text-4xl font-bold text-slate-800 mt-2">880K+</h3>
+                            <p class="text-xs text-orange-600 mt-2 font-medium">Kepler Star Dataset</p>
+                        </div>
+                        <span class="text-3xl">📊</span>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-4">Processed from 995 astronomical data files across multiple wavelengths</p>
+                </div>
+            </div>
+
+            <!-- Dynamic Description Box -->
+            <div id="metric-detail" class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-blue-200 shadow-lg transition-all duration-500 fade-in">
+                <h4 class="font-bold text-2xl mb-4 text-blue-800 font-heading">Model Status: <span class="text-green-600">ACTIVE & PRODUCTION-READY</span></h4>
+                <p class="text-slate-700 text-lg leading-relaxed">
+                    Kepler Q-Max represents a breakthrough in hybrid quantum-classical computing. By integrating PyTorch for classical data processing with Qiskit for quantum circuit optimization, 
+                    this model demonstrates tangible quantum advantage on practical problems. Click any metric card above for detailed technical specifications and performance benchmarks.
+                </p>
+                <div class="mt-6 flex items-center text-sm text-slate-600">
+                    <div class="w-3 h-3 rounded-full bg-green-500 mr-2 animate-pulse"></div>
+                    <span>Real-time inference available via Quantum API (Q-APIaaS)</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 2: TECHNOLOGY & ARCHITECTURE -->
+        <section id="tech" class="pt-8">
+            <div class="mb-12">
+                <h2 class="text-4xl font-bold text-slate-900 mb-6 font-heading">Technical Excellence & Architecture</h2>
+                <p class="text-slate-600 text-lg max-w-5xl leading-relaxed">
+                    Kepler Q-Max is not merely a model—it's a complete hybrid ecosystem. Under the leadership of Hussain Billah, CEO of Sonisium Lab, 
+                    this architecture seamlessly integrates classical computing's data processing prowess with quantum computing's optimization capabilities, 
+                    creating a synergistic framework that outperforms standalone classical or quantum approaches.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Training Visualization Chart -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+                    <div class="flex justify-between items-center mb-8">
+                        <h3 class="font-bold text-2xl text-slate-800 font-heading">Training Performance Analysis</h3>
+                        <div class="flex gap-4 text-sm">
+                            <span class="flex items-center"><span class="w-4 h-4 rounded-full bg-blue-500 mr-2"></span> Accuracy</span>
+                            <span class="flex items-center"><span class="w-4 h-4 rounded-full bg-red-400 mr-2"></span> Loss</span>
+                        </div>
+                    </div>
+                    <!-- CHART CONTAINER 1 -->
+                    <div class="chart-container">
+                        <canvas id="trainingChart"></canvas>
+                    </div>
+                    <p class="text-sm text-slate-600 mt-6 text-center leading-relaxed">
+                        Learning curves across 100 epochs demonstrate rapid convergence with accuracy stabilizing at 94.28% and loss minimized to 0.137. 
+                        The model shows remarkable stability with minimal overfitting.
+                    </p>
+                </div>
+
+                <!-- Circuit Composition & Logic -->
+                <div class="space-y-8">
+                    <!-- Circuit Gates Chart -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+                        <h3 class="font-bold text-2xl text-slate-800 mb-6 font-heading">Quantum Circuit Composition</h3>
+                        <div class="flex flex-col md:flex-row items-center gap-8">
+                            <!-- CHART CONTAINER 2 -->
+                            <div class="chart-container" style="max-height: 280px; height: 280px;">
+                                <canvas id="circuitChart"></canvas>
+                            </div>
+                            <div class="text-base text-slate-700 space-y-4 leading-relaxed">
+                                <p><strong class="text-blue-700">Hadamard Gates (H):</strong> Create superposition states, enabling quantum parallelism across all 25 qubits.</p>
+                                <p><strong class="text-amber-600">RY / RZ Rotation Gates:</strong> Parameterized rotations for fine-tuned quantum state preparation and optimization.</p>
+                                <p><strong class="text-purple-600">CNOT Entanglement Gates:</strong> Create quantum correlations between qubits, enabling complex multi-qubit operations essential for QAOA.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack Flow (HTML Visualization) -->
+                    <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-200">
+                        <h3 class="font-bold text-2xl text-slate-800 mb-6 font-heading">Hybrid Computational Workflow</h3>
+                        <div class="flex flex-col space-y-6">
+                            <div class="flex items-center p-5 bg-white rounded-xl shadow-md border-l-6 border-blue-500 transition hover:shadow-lg">
+                                <div class="font-bold text-2xl text-blue-600 mr-5">01</div>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-slate-800">Classical Data Processing</h4>
+                                    <p class="text-slate-600 mt-1">PyTorch loads and preprocesses 995 astronomical data files into optimized tensor format.</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-center">
+                                <div class="text-slate-400 text-2xl animate-bounce">↓</div>
+                            </div>
+                            <div class="flex items-center p-5 bg-white rounded-xl shadow-md border-l-6 border-purple-500 transition hover:shadow-lg">
+                                <div class="font-bold text-2xl text-purple-600 mr-5">02</div>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-slate-800">Parameterized Quantum Circuit (PQC)</h4>
+                                    <p class="text-slate-600 mt-1">Qiskit encodes classical data into a 25-qubit QAOA circuit with 10 variational layers.</p>
+                                </div>
+                            </div>
+                            <div class="flex justify-center">
+                                <div class="text-slate-400 text-2xl animate-bounce">↓</div>
+                            </div>
+                            <div class="flex items-center p-5 bg-white rounded-xl shadow-md border-l-6 border-green-500 transition hover:shadow-lg">
+                                <div class="font-bold text-2xl text-green-600 mr-5">03</div>
+                                <div>
+                                    <h4 class="font-semibold text-lg text-slate-800">Hybrid Optimization & Output</h4>
+                                    <p class="text-slate-600 mt-1">Classical optimizers minimize loss functions while quantum circuit parameters are tuned iteratively.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 3: IMPACT & REVENUE -->
+        <section id="impact" class="pt-8">
+            <div class="mb-12 flex flex-col md:flex-row md:items-center justify-between">
+                <div class="max-w-2xl">
+                    <h2 class="text-4xl font-bold text-slate-900 mb-4 font-heading">Application Domains & Economic Potential</h2>
+                    <p class="text-slate-600 text-lg leading-relaxed">
+                        From astrophysical discovery to global financial optimization—Kepler Q-Max demonstrates versatile applicability across multiple high-value sectors.
+                    </p>
+                </div>
+                <!-- Filter Buttons -->
+                <div class="mt-6 md:mt-0 flex flex-wrap gap-3">
+                    <button onclick="filterUseCases('all')" class="px-5 py-2.5 rounded-full bg-blue-700 text-white text-sm font-medium hover:bg-blue-800 transition-all shadow-md">All Sectors</button>
+                    <button onclick="filterUseCases('finance')" class="px-5 py-2.5 rounded-full bg-white border border-blue-300 text-blue-700 text-sm font-medium hover:bg-blue-50 transition-all shadow-sm">Financial Services</button>
+                    <button onclick="filterUseCases('space')" class="px-5 py-2.5 rounded-full bg-white border border-blue-300 text-blue-700 text-sm font-medium hover:bg-blue-50 transition-all shadow-sm">Space & Astrophysics</button>
+                    <button onclick="filterUseCases('industry')" class="px-5 py-2.5 rounded-full bg-white border border-blue-300 text-blue-700 text-sm font-medium hover:bg-blue-50 transition-all shadow-sm">Industrial Optimization</button>
+                </div>
+            </div>
+
+            <!-- Use Cases Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" id="use-cases-grid">
+                <!-- Space Card -->
+                <div class="use-case-card space group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300" data-category="space">
+                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">🪐</div>
+                    <h3 class="font-bold text-xl mb-4 text-slate-800 font-heading">Astrophysics & Exoplanet Discovery</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Enhanced exoplanet detection accuracy and stellar classification using Kepler and TESS data. 
+                        Reduces NASA/ESA data processing costs by 30-40% through optimized quantum feature extraction.
+                    </p>
+                    <div class="mt-6 text-xs text-indigo-600 font-medium">Potential Savings: $2-4M/year per mission</div>
+                </div>
+                <!-- Finance Card -->
+                <div class="use-case-card finance group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300" data-category="finance">
+                    <div class="w-14 h-14 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">📈</div>
+                    <h3 class="font-bold text-xl mb-4 text-slate-800 font-heading">Portfolio Optimization & Risk Analysis</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        High-dimensional risk assessment and real-time market prediction, outperforming classical algorithms by 15-25% in backtesting. 
+                        Solves Markowitz optimization with 1000+ assets in near real-time.
+                    </p>
+                    <div class="mt-6 text-xs text-emerald-600 font-medium">Performance Gain: 15-25% over classical methods</div>
+                </div>
+                <!-- Industry Card -->
+                <div class="use-case-card industry group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300" data-category="industry">
+                    <div class="w-14 h-14 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">💊</div>
+                    <h3 class="font-bold text-xl mb-4 text-slate-800 font-heading">Pharmaceutical Molecular Simulation</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Accelerates molecular simulation and novel drug discovery by 40-60%. Identifies promising chemical compounds 
+                        for COVID-19, cancer, and neurodegenerative disease treatments through quantum-enhanced screening.
+                    </p>
+                    <div class="mt-6 text-xs text-amber-600 font-medium">Time Reduction: 40-60% in discovery phase</div>
+                </div>
+                <!-- Logistics Card -->
+                <div class="use-case-card industry group bg-white p-8 rounded-2xl border border-gray-200 hover:shadow-xl transition-all duration-300" data-category="industry">
+                    <div class="w-14 h-14 bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition-transform duration-300">🚚</div>
+                    <h3 class="font-bold text-xl mb-4 text-slate-800 font-heading">Logistics & Supply Chain Optimization</h3>
+                    <p class="text-slate-600 leading-relaxed">
+                        Solves complex Vehicle Routing (VRP) and Traveling Salesman (TSP) problems with 1000+ nodes. 
+                        Reduces global shipping costs by 12-18% through quantum-optimized routing and scheduling.
+                    </p>
+                    <div class="mt-6 text-xs text-orange-600 font-medium">Cost Reduction: 12-18% in logistics operations</div>
+                </div>
+            </div>
+
+            <!-- Revenue Projection Chart Section -->
+            <div class="bg-gradient-to-br from-white to-blue-50 p-10 rounded-2xl border border-blue-200 shadow-xl">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-10">
+                    <div>
+                        <h3 class="text-3xl font-bold text-slate-900 mb-2 font-heading">Revenue Projection Forecast (2026 - 2030)</h3>
+                        <p class="text-slate-600 text-lg mt-2">
+                            Projected revenue streams from licensing, Q-APIaaS subscriptions, and strategic consulting services (in USD millions).
+                        </p>
+                    </div>
+                    <div class="text-right mt-6 md:mt-0">
+                        <p class="text-sm text-slate-500 uppercase tracking-wider">Cumulative Revenue by 2030</p>
+                        <p class="text-5xl font-bold text-green-600 mt-2">$101.2M</p>
+                        <p class="text-sm text-slate-500 mt-1">5-Year Projection</p>
+                    </div>
+                </div>
+                <!-- CHART CONTAINER 3 -->
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="p-4 bg-blue-100 rounded-xl">
+                        <p class="text-sm text-slate-600">Licensing Fees</p>
+                        <p class="text-2xl font-bold text-blue-800">$58M</p>
+                    </div>
+                    <div class="p-4 bg-green-100 rounded-xl">
+                        <p class="text-sm text-slate-600">Q-APIaaS Subscriptions</p>
+                        <p class="text-2xl font-bold text-green-800">$32M</p>
+                    </div>
+                    <div class="p-4 bg-purple-100 rounded-xl">
+                        <p class="text-sm text-slate-600">Consulting & Implementation</p>
+                        <p class="text-2xl font-bold text-purple-800">$11.2M</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 4: PROFILE & PORTFOLIO -->
+        <section id="profile" class="pt-8">
+            <div class="mb-12 text-center">
+                <h2 class="text-4xl font-bold text-slate-900 mb-6 font-heading">Lead Researcher & Portfolio</h2>
+                <p class="text-slate-600 text-lg max-w-3xl mx-auto leading-relaxed">
+                    Hussain Billah - Visionary behind Kepler Q-Max and founder of Sonisium Quantum Lab. 
+                    Explore the complete portfolio showcasing quantum computing research, AI innovations, and technology leadership.
+                </p>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-12">
+                <!-- Profile Card -->
+                <div class="glass-card p-10 rounded-2xl max-w-md text-center">
+                    <div class="flex justify-center mb-6">
+                        <div class="profile-circle">
+                            <img src="https://i.postimg.cc/BLVGpctJ/profile.jpg" alt="Hussain Billah - Quantum Researcher" onerror="this.src='https://via.placeholder.com/160x160/3b82f6/ffffff?text=HB'" />
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-slate-800 mb-2 font-heading">Hussain Billah</h3>
+                    <p class="text-blue-600 font-medium mb-4">CEO & Lead Quantum Researcher</p>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        Pioneering quantum-classical hybrid architectures with focus on practical quantum advantage. 
+                        Leading Bangladesh's first quantum computing research initiative with global impact potential.
+                    </p>
+                    <div class="space-y-3 text-left">
+                        <div class="flex items-center">
+                            <span class="text-blue-500 mr-3">🔬</span>
+                            <span class="text-slate-700">Specialization: Quantum Machine Learning</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-blue-500 mr-3">🎓</span>
+                            <span class="text-slate-700">Focus: Hybrid Quantum-Classical Systems</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="text-blue-500 mr-3">📍</span>
+                            <span class="text-slate-700">Based: Dhaka, Bangladesh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Links -->
+                <div class="max-w-xl">
+                    <h3 class="text-2xl font-bold text-slate-800 mb-8 font-heading">Explore the Complete Portfolio</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <a href="https://hussainbillah.github.io/Portfolio-by-Hussain-Billah/" target="_blank" class="glass-card p-6 rounded-xl border-l-4 border-blue-500 hover:shadow-xl transition-all duration-300 group">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="font-bold text-lg text-slate-800 group-hover:text-blue-700">Complete Portfolio</h4>
+                                <span class="text-2xl group-hover:translate-x-2 transition-transform">→</span>
+                            </div>
+                            <p class="text-slate-600 text-sm">Interactive showcase of quantum computing projects, research papers, and AI innovations</p>
+                        </a>
+                        
+                        <div class="glass-card p-6 rounded-xl border-l-4 border-green-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-4">Research Publications</h4>
+                            <ul class="text-slate-600 text-sm space-y-2">
+                                <li class="flex items-center">• Quantum Advantage in Combinatorial Optimization</li>
+                                <li class="flex items-center">• Hybrid Architectures for Practical QML</li>
+                                <li class="flex items-center">• Bangladeshi Quantum Computing Roadmap</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="glass-card p-6 rounded-xl border-l-4 border-purple-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-4">Technical Expertise</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">Qiskit</span>
+                                <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs">PyTorch</span>
+                                <span class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-xs">Quantum ML</span>
+                                <span class="px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-xs">QAOA</span>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card p-6 rounded-xl border-l-4 border-orange-500">
+                            <h4 class="font-bold text-lg text-slate-800 mb-4">Contact & Collaboration</h4>
+                            <p class="text-slate-600 text-sm mb-3">Open for research collaboration, speaking engagements, and strategic partnerships</p>
+                            <button onclick="window.open('mailto:contact@sonisiumlab.com')" class="text-blue-600 font-medium text-sm hover:text-blue-800">contact@sonisiumlab.com</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider"></div>
+
+        <!-- SECTION 5: GEOPOLITICS & STRATEGY -->
+        <section id="strategy" class="pt-8 pb-20">
+            <div class="mb-12 text-center">
+                <h2 class="text-4xl font-bold text-slate-900 mb-6 font-heading">Geopolitical Strategy & National Role</h2>
+                <p class="text-slate-600 text-xl max-w-4xl mx-auto leading-relaxed">
+                    Kepler Q-Max transcends technology—it represents a "Global Strategic Asset" for Bangladesh, 
+                    unlocking new frontiers in international diplomacy and national economic transformation.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Strategy Card 1 -->
+                <div class="relative p-8 bg-gradient-to-br from-slate-800 to-slate-900 text-white rounded-2xl overflow-hidden group hover:shadow-2xl transition-all duration-500">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 text-7xl font-bold group-hover:opacity-20 transition-opacity">🇧🇩</div>
+                    <h3 class="text-2xl font-bold mb-5 text-blue-300 font-heading">National Strategic Asset</h3>
+                    <p class="text-slate-300 text-base leading-relaxed mb-6">
+                        Formal designation as a "National Strategic Technology" would enable governmental data protection 
+                        and cybersecurity applications, positioning Bangladesh as a quantum-ready nation in South Asia.
+                    </p>
+                    <ul class="text-sm text-blue-200 space-y-2 list-none">
+                        <li class="flex items-center">✓ National Data Center Security</li>
+                        <li class="flex items-center">✓ Policy Support & Strategic Funding</li>
+                        <li class="flex items-center">✓ Sovereign Quantum Capability</li>
+                    </ul>
+                    <div class="mt-8 pt-6 border-t border-slate-700">
+                        <p class="text-xs text-slate-400">Potential Impact: $500M+ in import substitution by 2035</p>
+                    </div>
+                </div>
+
+                <!-- Strategy Card 2 -->
+                <div class="relative p-8 bg-gradient-to-br from-blue-900 to-indigo-900 text-white rounded-2xl overflow-hidden group hover:shadow-2xl transition-all duration-500">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 text-7xl font-bold group-hover:opacity-20 transition-opacity">🤝</div>
+                    <h3 class="text-2xl font-bold mb-5 text-blue-300 font-heading">Technology Diplomacy (Tech-Diplomacy)</h3>
+                    <p class="text-slate-300 text-base leading-relaxed mb-6">
+                        Strategic partnerships with NASA, ESA, or JAXA would position Bangladesh as a technology contributor 
+                        rather than consumer, enhancing soft power and international collaboration opportunities.
+                    </p>
+                    <ul class="text-sm text-blue-200 space-y-2 list-none">
+                        <li class="flex items-center">✓ Billion-dollar Research Cost Savings</li>
+                        <li class="flex items-center">✓ International Scientific Collaboration</li>
+                        <li class="flex items-center">✓ Enhanced Global Technology Standing</li>
+                    </ul>
+                    <div class="mt-8 pt-6 border-t border-blue-800">
+                        <p class="text-xs text-slate-400">Diplomatic Value: Strategic partnerships with 5+ space agencies</p>
+                    </div>
+                </div>
+
+                <!-- Strategy Card 3 -->
+                <div class="relative p-8 bg-gradient-to-br from-slate-800 to-blue-900 text-white rounded-2xl overflow-hidden group hover:shadow-2xl transition-all duration-500">
+                    <div class="absolute top-0 right-0 p-6 opacity-10 text-7xl font-bold group-hover:opacity-20 transition-opacity">🧠</div>
+                    <h3 class="text-2xl font-bold mb-5 text-blue-300 font-heading">Brain Gain & Talent Development</h3>
+                    <p class="text-slate-300 text-base leading-relaxed mb-6">
+                        Success attracts global talent and retains domestic expertise, creating a sustainable "National Quantum Talent Pool" 
+                        that reverses brain drain and establishes Bangladesh as a quantum research hub.
+                    </p>
+                    <ul class="text-sm text-blue-200 space-y-2 list-none">
+                        <li class="flex items-center">✓ Advanced Research Opportunities</li>
+                        <li class="flex items-center">✓ Reverse Brain Drain Initiatives</li>
+                        <li class="flex items-center">✓ Domestic Quantum Workforce Development</li>
+                    </ul>
+                    <div class="mt-8 pt-6 border-t border-slate-700">
+                        <p class="text-xs text-slate-400">Target: 500+ quantum specialists trained by 2030</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-slate-900 to-slate-950 text-slate-400 py-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row justify-between items-center">
+                <div class="mb-10 lg:mb-0 text-center lg:text-left">
+                    <span class="text-3xl font-bold text-white font-heading">Sonisium <span class="text-blue-400">Quantum Lab</span></span>
+                    <p class="text-slate-500 mt-3 max-w-md">
+                        Pioneering quantum-classical hybrid computing solutions with global impact. 
+                        Based in Dhaka, Bangladesh with research collaborations worldwide.
+                    </p>
+                    <div class="mt-6 flex justify-center lg:justify-start space-x-4">
+                        <a href="https://hussainbillah.github.io/Portfolio-by-Hussain-Billah/" target="_blank" class="px-5 py-2 bg-blue-800 text-white rounded-lg hover:bg-blue-700 transition text-sm font-medium">View Portfolio</a>
+                        <button onclick="window.open('mailto:contact@sonisiumlab.com')" class="px-5 py-2 bg-slate-800 text-slate-300 rounded-lg hover:bg-slate-700 transition text-sm font-medium">Contact</button>
+                    </div>
+                </div>
+                <div class="text-center lg:text-right">
+                    <div class="mb-6">
+                        <p class="text-sm text-slate-500 uppercase tracking-wider mb-2">Leadership</p>
+                        <p class="text-lg text-white">Hussain Billah</p>
+                        <p class="text-slate-500">CEO & Lead Quantum Researcher</p>
+                    </div>
+                    <div class="text-sm text-slate-500 space-y-1">
+                        <p>&copy; 2025 Sonisium Quantum Lab. All intellectual property rights reserved.</p>
+                        <p>Kepler Q-Max Model Technical Report Version 2.1</p>
+                        <p class="mt-4 text-xs">This research complies with international quantum computing ethics guidelines</p>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-slate-800 text-center text-sm text-slate-600">
+                <p>Kepler Q-Max is simulated on IBM Quantum Cloud Infrastructure. Results represent theoretical maximum performance under ideal conditions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // State Management
+        const state = {
+            currentSection: 'dashboard',
+            metrics: {
+                acc: "94.28% accuracy demonstrates the hybrid model's exceptional pattern recognition capabilities on complex astronomical data. Validated across 995 files with rigorous cross-validation protocols, outperforming classical benchmarks by 18-22%.",
+                qubit: "25-qubit architecture enables solving optimization problems that are intractable for classical computers. Simulated on IBM Quantum infrastructure, this represents the practical limit of current NISQ-era quantum advantage.",
+                depth: "10-layer circuit depth optimally balances quantum entanglement with noise resilience. Each layer implements QAOA (Quantum Approximate Optimization Algorithm) with parameterized rotations for maximum expressibility.",
+                data: "880,304 training samples processed from the Kepler Star Dataset represent one of the largest quantum machine learning training sets. Enables robust feature extraction across multiple astronomical wavelengths."
+            }
+        };
+
+        // DOM Elements
+        const metricDetailBox = document.getElementById('metric-detail');
+
+        // Navigation Logic
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                // Adjust for sticky header
+                const headerOffset = 90;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+
+                // Update Active State
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('nav-active'));
+                const activeBtn = document.querySelector(`button[data-target="${id}"]`);
+                if(activeBtn) activeBtn.classList.add('nav-active');
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Interaction: Highlight Metrics
+        function highlightMetric(key) {
+            metricDetailBox.innerHTML = `
+                <h4 class="font-bold text-2xl mb-4 text-blue-800 fade-in font-heading">Technical Specification Details</h4>
+                <p class="text-slate-700 text-lg leading-relaxed fade-in">${state.metrics[key]}</p>
+                <div class="mt-6 flex items-center text-sm text-blue-600">
+                    <div class="w-3 h-3 rounded-full bg-blue-500 mr-2"></div>
+                    <span>Click other metrics for comparative analysis</span>
+                </div>
+            `;
+            // Add a temporary animation
+            metricDetailBox.classList.add('ring-4', 'ring-blue-100');
+            setTimeout(() => metricDetailBox.classList.remove('ring-4', 'ring-blue-100'), 800);
+        }
+
+        // Interaction: Filter Use Cases
+        function filterUseCases(category) {
+            const cards = document.querySelectorAll('.use-case-card');
+            const buttons = document.querySelectorAll('#impact button');
+            
+            // Update button states
+            buttons.forEach(btn => {
+                if (btn.textContent.includes(category.replace('all', 'All'))) {
+                    btn.classList.remove('bg-white', 'text-blue-700', 'border');
+                    btn.classList.add('bg-blue-700', 'text-white');
+                } else {
+                    btn.classList.remove('bg-blue-700', 'text-white');
+                    btn.classList.add('bg-white', 'text-blue-700', 'border', 'border-blue-300');
+                }
+            });
+            
+            // Filter cards
+            cards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.classList.add('fade-in');
+                    }, 10);
+                } else {
+                    card.classList.remove('fade-in');
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Chart Initialization (After DOM Load)
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Training Performance Chart (Line)
+            const ctxTraining = document.getElementById('trainingChart').getContext('2d');
+            new Chart(ctxTraining, {
+                type: 'line',
+                data: {
+                    labels: ['Epoch 10', 'Epoch 20', 'Epoch 30', 'Epoch 40', 'Epoch 50', 'Epoch 60', 'Epoch 70', 'Epoch 80', 'Epoch 90', 'Epoch 100'],
+                    datasets: [{
+                        label: 'Accuracy (%)',
+                        data: [25.58, 41.58, 52.98, 63.95, 72.55, 81.20, 88.45, 91.30, 93.50, 94.28],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.08)',
+                        borderWidth: 3,
+                        yAxisID: 'y',
+                        tension: 0.4,
+                        fill: true,
+                        pointBackgroundColor: '#3b82f6',
+                        pointRadius: 4,
+                        pointHoverRadius: 8
+                    }, {
+                        label: 'Loss',
+                        data: [0.80, 0.63, 0.45, 0.37, 0.25, 0.21, 0.18, 0.15, 0.14, 0.137],
+                        borderColor: '#ef4444',
+                        backgroundColor: 'rgba(239, 68, 68, 0.0)',
+                        borderWidth: 2,
+                        borderDash: [6, 4],
+                        yAxisID: 'y1',
+                        tension: 0.4,
+                        pointBackgroundColor: '#ef4444',
+                        pointRadius: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: { mode: 'index', intersect: false },
+                    plugins: {
+                        legend: { 
+                            position: 'top',
+                            labels: {
+                                font: { size: 13, family: 'Poppins' },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            titleFont: { family: 'Poppins', size: 12 },
+                            bodyFont: { family: 'Poppins', size: 13 },
+                            padding: 12,
+                            cornerRadius: 8
+                        }
+                    },
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: { 
+                                display: true, 
+                                text: 'Accuracy (%)',
+                                font: { family: 'Poppins', size: 13, weight: '600' }
+                            },
+                            min: 0, 
+                            max: 100,
+                            grid: { color: 'rgba(0,0,0,0.05)' }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            grid: { drawOnChartArea: false },
+                            title: { 
+                                display: true, 
+                                text: 'Loss Value',
+                                font: { family: 'Poppins', size: 13, weight: '600' }
+                            }
+                        },
+                        x: {
+                            grid: { color: 'rgba(0,0,0,0.03)' }
+                        }
+                    }
+                }
+            });
+
+            // 2. Circuit Composition Chart (Doughnut)
+            const ctxCircuit = document.getElementById('circuitChart').getContext('2d');
+            new Chart(ctxCircuit, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Hadamard (H)', 'RY Rotation', 'CNOT Entanglement', 'RZ Phase'],
+                    datasets: [{
+                        data: [25, 25, 24, 25],
+                        backgroundColor: ['#60a5fa', '#f59e0b', '#8b5cf6', '#10b981'],
+                        borderWidth: 0,
+                        hoverOffset: 15
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '65%',
+                    plugins: {
+                        legend: { 
+                            position: 'right', 
+                            labels: { 
+                                boxWidth: 16,
+                                padding: 20,
+                                font: { family: 'Poppins', size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.raw}% of circuit`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // 3. Revenue Projection Chart (Bar)
+            const ctxRevenue = document.getElementById('revenueChart').getContext('2d');
+            new Chart(ctxRevenue, {
+                type: 'bar',
+                data: {
+                    labels: ['2026', '2027', '2028', '2029', '2030'],
+                    datasets: [{
+                        label: 'Projected Revenue (Million USD)',
+                        data: [2.5, 5.8, 12.4, 28.5, 52.0],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.8)',
+                            'rgba(16, 185, 129, 0.9)',
+                            'rgba(16, 185, 129, 1)',
+                            'rgba(16, 185, 129, 1)',
+                            'rgba(16, 185, 129, 1)'
+                        ],
+                        borderRadius: 10,
+                        borderWidth: 0,
+                        hoverBackgroundColor: '#059669'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            callbacks: {
+                                label: function(context) {
+                                    return `Revenue: $${context.parsed.y} million`;
+                                },
+                                afterLabel: function(context) {
+                                    const year = context.label;
+                                    const growth = context.datasetIndex === 0 ? 
+                                        (context.parsed.y / 2.5 - 1) * 100 : 
+                                        (context.parsed.y / context.dataset.data[context.dataIndex-1] - 1) * 100;
+                                    return `YoY Growth: ${growth.toFixed(1)}%`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: { color: 'rgba(0,0,0,0.05)' },
+                            title: {
+                                display: true,
+                                text: 'Million USD',
+                                font: { family: 'Poppins', size: 13, weight: '600' }
+                            },
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value;
+                                }
+                            }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Intersection Observer for scroll highlighting
+        const sections = document.querySelectorAll('section');
+        const observerOptions = { root: null, threshold: 0.25 };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('nav-active'));
+                    const activeBtn = document.querySelector(`button[data-target="${id}"]`);
+                    if(activeBtn) activeBtn.classList.add('nav-active');
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => observer.observe(section));
+
+        // Initialize filter to show all
+        setTimeout(() => filterUseCases('all'), 100);
+
+    </script>
+</body>
+</html>
